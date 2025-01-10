@@ -21,6 +21,20 @@
     "text": "library(palmerpenguins)\nlibrary(dplyr)\n\nr_df &lt;- penguins\n\n\n\n\n\nimport seaborn as sns\npy_df = sns.load_dataset('penguins')"
   },
   {
+    "objectID": "index.html#write-csvxlsx",
+    "href": "index.html#write-csvxlsx",
+    "title": "r-py-cheatsheet",
+    "section": "",
+    "text": "r_df |&gt; \n  write.csv(\"penguins.csv\")\n\n\n\n\n\npy_df.to_csv('penguins.csv')"
+  },
+  {
+    "objectID": "index.html#read-csvxlsx",
+    "href": "index.html#read-csvxlsx",
+    "title": "r-py-cheatsheet",
+    "section": "",
+    "text": "r_df_csv &lt;- read.csv(\"penguins.csv\")\n\n\n\n\n\npy_df_csv = pd.read_csv(\"penguins.csv\")"
+  },
+  {
     "objectID": "index.html#columns-names",
     "href": "index.html#columns-names",
     "title": "r-py-cheatsheet",
@@ -63,6 +77,13 @@
     "text": "structure / info\n\n\n\nr_df |&gt; str()\n\ntibble [344 × 8] (S3: tbl_df/tbl/data.frame)\n $ species          : Factor w/ 3 levels \"Adelie\",\"Chinstrap\",..: 1 1 1 1 1 1 1 1 1 1 ...\n $ island           : Factor w/ 3 levels \"Biscoe\",\"Dream\",..: 3 3 3 3 3 3 3 3 3 3 ...\n $ bill_length_mm   : num [1:344] 39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...\n $ bill_depth_mm    : num [1:344] 18.7 17.4 18 NA 19.3 20.6 17.8 19.6 18.1 20.2 ...\n $ flipper_length_mm: int [1:344] 181 186 195 NA 193 190 181 195 193 190 ...\n $ body_mass_g      : int [1:344] 3750 3800 3250 NA 3450 3650 3625 4675 3475 4250 ...\n $ sex              : Factor w/ 2 levels \"female\",\"male\": 2 1 1 NA 1 2 1 2 NA NA ...\n $ year             : int [1:344] 2007 2007 2007 2007 2007 2007 2007 2007 2007 2007 ...\n\n\n\n\n\n\npy_df.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 344 entries, 0 to 343\nData columns (total 7 columns):\n #   Column             Non-Null Count  Dtype  \n---  ------             --------------  -----  \n 0   species            344 non-null    object \n 1   island             344 non-null    object \n 2   bill_length_mm     342 non-null    float64\n 3   bill_depth_mm      342 non-null    float64\n 4   flipper_length_mm  342 non-null    float64\n 5   body_mass_g        342 non-null    float64\n 6   sex                333 non-null    object \ndtypes: float64(4), object(3)\nmemory usage: 18.9+ KB"
   },
   {
+    "objectID": "index.html#copy-of-dataframe",
+    "href": "index.html#copy-of-dataframe",
+    "title": "r-py-cheatsheet",
+    "section": "copy of dataframe",
+    "text": "copy of dataframe\nHow to create 2 independent dataframes. In Python, if you another_df = original_df, each modification of another_df will be reflected in original_df.\n\n\n\nanother_r_df &lt;- r_df\n\n\n\n\n\nanother_py_df = py_df.copy()"
+  },
+  {
     "objectID": "index.html#filter",
     "href": "index.html#filter",
     "title": "r-py-cheatsheet",
@@ -96,27 +117,6 @@
     "title": "r-py-cheatsheet",
     "section": "summarise",
     "text": "summarise\n\n\n\nr_df |&gt; \n  group_by(species) |&gt; \n  summarise(bill_length_mm = mean(bill_length_mm, na.rm = T))\n\n# A tibble: 3 × 2\n  species   bill_length_mm\n  &lt;fct&gt;              &lt;dbl&gt;\n1 Adelie              38.8\n2 Chinstrap           48.8\n3 Gentoo              47.5\n\n\n\n\n\n\npy_df.groupby('species')['bill_length_mm'].mean().reset_index()\n\n     species  bill_length_mm\n0     Adelie       38.791391\n1  Chinstrap       48.833824\n2     Gentoo       47.504878\n\n\n# # Mean dep_delay and arr_delay for each season\n# dadel_season = flights.groupby('season')['dep_delay', 'arr_delay'].mean().reset_index()\n# print(dadel_season)\n# \n# # Mean and std delays by origin\n# del_ori = flights.groupby('origin')['total_delay', 'dep_delay', 'arr_delay'].agg(['mean', 'std'])\n# print(del_ori)"
-  },
-  {
-    "objectID": "index.html#write-csvxlsx",
-    "href": "index.html#write-csvxlsx",
-    "title": "r-py-cheatsheet",
-    "section": "",
-    "text": "r_df |&gt; \n  write.csv(\"penguins.csv\")\n\n\n\n\n\npy_df.to_csv('penguins.csv')"
-  },
-  {
-    "objectID": "index.html#read-csvxlsx",
-    "href": "index.html#read-csvxlsx",
-    "title": "r-py-cheatsheet",
-    "section": "",
-    "text": "r_df_csv &lt;- read.csv(\"penguins.csv\")\n\n\n\n\n\npy_df_csv = pd.read_csv(\"penguins.csv\")"
-  },
-  {
-    "objectID": "index.html#copy-of-dataframe",
-    "href": "index.html#copy-of-dataframe",
-    "title": "r-py-cheatsheet",
-    "section": "copy of dataframe",
-    "text": "copy of dataframe\nHow to create 2 independent dataframes. In Python, if you another_df = original_df, each modification of another_df will be reflected in original_df.\n\n\n\nanother_r_df &lt;- r_df\n\n\n\n\n\nanother_py_df = py_df.copy()"
   },
   {
     "objectID": "index.html#rename",
