@@ -1,0 +1,501 @@
+---
+title: "r-py-cheatsheet"
+author: "Yann Say"
+engine: knitr
+execute: 
+  freeze: auto
+---
+# Reading and writing data
+
+## Create a dataframe
+::: {.columns}
+
+::: {.column width="45%"}
+```{r}
+r_df_example <- data.frame(id = letters[1:6],
+numeric = 1:6)
+r_df_example
+```
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+
+```{python}
+import pandas as pd
+py_df_example = pd.DataFrame({'id': list('abcdef'),
+                 'numeric': list(range(1, 7))
+                })
+
+py_df_example
+```
+:::
+
+:::
+
+## palmers 
+::: {.columns}
+
+::: {.column width="45%"}
+```{r}
+#| warning: false 
+#| message: false
+
+library(palmerpenguins)
+library(dplyr)
+
+r_df <- penguins
+
+```
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+```{python}
+import seaborn as sns
+py_df = sns.load_dataset('penguins')
+
+```
+:::
+
+:::
+
+## write csv/xlsx
+::: {.columns}
+
+::: {.column width="45%"}
+```{r}
+r_df |> 
+  write.csv("penguins.csv")
+```
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+```{python}
+py_df.to_csv('penguins.csv')
+```
+:::
+
+:::
+
+## read csv/xlsx
+::: {.columns}
+::: {.column width="45%"}
+```{r}
+r_df_csv <- read.csv("penguins.csv")
+```
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+```{python}
+py_df_csv =	pd.read_csv("penguins.csv")
+```
+:::
+:::
+
+# Data Exploration
+
+## Columns names
+::: {.columns}
+
+::: {.column width="45%"}
+```{r}
+names(r_df)
+```
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+
+```{python}
+
+py_df.columns
+```
+:::
+
+:::
+
+## dimensions
+
+::: {.columns}
+
+::: {.column width="45%"}
+```{r}
+dim(r_df)
+```
+```{r}
+nrow(r_df)
+```
+```{r}
+ncol(r_df)
+```
+
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+
+```{python}
+
+py_df.shape
+```
+```{python}
+
+py_df.shape[0]
+```
+```{python}
+
+py_df.shape[1]
+```
+:::
+
+:::
+
+## head
+::: {.columns}
+
+::: {.column width="45%"}
+```{r}
+r_df |> head()
+```
+
+:::
+
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+```{python}
+py_df.head()
+```
+
+:::
+:::
+## table | tally
+::: {.columns}
+
+::: {.column width="45%"}
+```{r}
+r_df$species |>  table()
+```
+```{r}
+r_df |>  group_by(species) |>  tally()
+```
+
+:::
+
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+```{python}
+py_df['species'].value_counts()
+
+```
+
+:::
+:::
+## summary
+::: {.columns}
+
+::: {.column width="45%"}
+```{r}
+
+```
+
+:::
+
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+```{python}
+
+```
+
+:::
+:::
+
+## structure / info
+::: {.columns}
+
+::: {.column width="45%"}
+```{r}
+r_df |> str()
+```
+
+:::
+
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+```{python}
+py_df.info()
+```
+
+:::
+:::
+
+
+
+# Data manipulation
+
+## copy of dataframe
+
+How to create 2 independent dataframes. In Python, if you `another_df = original_df`, each modification of `another_df` will be reflected in `original_df`. 
+
+::: {.columns}
+::: {.column width="45%"}
+```{r}
+another_r_df <- r_df
+```
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+```{python}
+another_py_df = py_df.copy()
+```
+:::
+:::
+
+## filter
+::: {.columns}
+
+::: {.column width="45%"}
+```{r}
+penguins |> 
+  filter(species == "Adelie")
+```
+```{r}
+r_df[r_df$species == "Adelie",]
+```
+
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+
+```{python}
+py_df[py_df["species"] == "Adelie"]
+
+```
+:::
+
+:::
+
+## select
+::: {.columns}
+
+::: {.column width="45%"}
+```{r}
+r_df$species
+```
+
+```{r}
+r_df[["species"]]
+```
+
+:::
+
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+
+```{python}
+py_df.species
+```
+
+
+```{python}
+py_df["species"]
+```
+```{python}
+py_df.filter(["species"])
+```
+
+:::
+:::
+
+
+## filter & select
+::: {.columns}
+
+::: {.column width="45%"}
+```{r}
+r_df |> 
+  filter(species == "Adelie") |> 
+  select("bill_length_mm")
+```
+
+```{r}
+r_df[r_df$species == "Adelie", "bill_length_mm"]
+```
+
+:::
+
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+
+```{python}
+py_df.loc[py_df["species"] == "Adelie", "bill_length_mm"] 
+
+```
+
+:::
+:::
+
+## mutate
+
+## summarise
+::: {.columns}
+
+::: {.column width="45%"}
+```{r}
+r_df |> 
+  group_by(species) |> 
+  summarise(bill_length_mm = mean(bill_length_mm, na.rm = T))
+```
+:::
+
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+
+```{python}
+py_df.groupby('species')['bill_length_mm'].mean().reset_index()
+
+# # Mean dep_delay and arr_delay for each season
+# dadel_season = flights.groupby('season')['dep_delay', 'arr_delay'].mean().reset_index()
+# print(dadel_season)
+# 
+# # Mean and std delays by origin
+# del_ori = flights.groupby('origin')['total_delay', 'dep_delay', 'arr_delay'].agg(['mean', 'std'])
+# print(del_ori)
+
+```
+
+:::
+:::
+
+## rename
+
+::: {.columns}
+::: {.column width="45%"}
+```{r}
+r_df |>
+  rename(Species = species,
+         Island = island)
+```
+```{r}
+rename_r_df <- r_df[,c("species", "island")]
+names(rename_r_df) <- c("Species", "Island")
+names(rename_r_df)
+```
+
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+
+```{python}
+py_df_rename1 = py_df.copy()
+py_df_rename1.rename(columns={'species': 'Species', 'island': 'Island'}, inplace=True)
+py_df_rename1
+```
+```{python}
+py_df_rename2 = py_df[["species","island"]].copy()
+py_df_rename2.columns = ["Species", "Island"]
+py_df_rename2.columns
+```
+:::
+:::
+
+## arrange
+
+::: {.columns}
+::: {.column width="45%"}
+```{r}
+r_df |> 
+  arrange(species) |> 
+  head()
+```
+```{r}
+r_df |> 
+  arrange(desc(species)) |> 
+  head()
+```
+
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+```{python}
+py_df.sort_values(by = "species").head()
+```
+```{python}
+py_df.sort_values(by = "species", ascending = False).head()
+```
+:::
+:::
+
+# control flows and loops
+
+# function
+
+# anonymous functions / lambda
+
+# logics
+
+## Missing value
+::: {.columns}
+::: {.column width="45%"}
+```{r}
+is.na(r_df$bill_length_mm)
+```
+
+```{r}
+sum(is.na(r_df$bill_length_mm) )
+```
+
+```{r}
+sum(!is.na(r_df$bill_length_mm) )
+```
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+```{python}
+py_df["bill_length_mm"].isnull()
+```
+
+```{python}
+py_df["bill_length_mm"].isnull().sum()
+
+```
+
+```{python}
+py_df["bill_length_mm"].notna().sum()
+
+```
+:::
+:::
+
+# Folders and files management
+
+::: {.columns}
+::: {.column width="45%"}
+```{r}
+list.files()	
+```
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+```{python}
+import os
+os.listdir()
+
+```
+:::
+:::

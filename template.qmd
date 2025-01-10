@@ -1,0 +1,14 @@
+::: {.columns}
+::: {.column width="45%"}
+```{r}
+
+```
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+```{python}
+
+```
+:::
+:::
