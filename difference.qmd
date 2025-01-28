@@ -1,0 +1,60 @@
+# Difference
+
+## Arguments of functions
+
+In R, there is a fuzzy match between the variables. Python does not allow.
+
+::: {.columns}
+::: {.column width="45%"}
+```{r}
+my_r_function <- function(number, text) {
+  print(paste0("this was a number: ", number))
+  print(paste0("this is a text: ", text))
+}
+
+my_r_function(num = 123, t = "test")
+```
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+```{python}
+#| error: true
+
+def my_py_function(number, text):
+  print("this was a number: ", number)
+  print("this is a text: ", text)
+  
+my_py_function(num = 123, t = "test")
+```
+:::
+:::
+
+## Return
+
+In R, function always return the last call. In Python, if you don't return an object, it will return None.
+
+::: {.columns}
+::: {.column width="45%"}
+```{r}
+my_r_function <- function(number = 0, text = "a") {
+  paste(number, text)
+}
+
+my_r_example <- my_r_function(123, "b")
+my_r_example
+```
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+```{python}
+def my_py_function(number = 0, text = "a"):
+  str(number) + text
+
+
+my_py_example = my_py_function(number = 123, text = "b")
+print(my_py_example)
+```
+:::
+:::
