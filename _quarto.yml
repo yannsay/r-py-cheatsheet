@@ -1,6 +1,8 @@
 project:
   type: website
-  
+engine: knitr
+execute:
+  freeze: auto  
 website:
   title: R to Python cheatsheet
   sidebar:
@@ -12,3 +14,4 @@ format:
   html:
     theme: lumen
     toc: true
+    

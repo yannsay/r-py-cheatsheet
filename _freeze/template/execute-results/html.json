@@ -1,0 +1,15 @@
+{
+  "hash": "0d5f71413f71abab109c92eb09eeedbb",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"template\"\nauthor: \"Yann Say\"\n---\n\n\n::: {.columns}\n::: {.column width=\"45%\"}\n\n\n::: {.cell}\n\n:::\n\n\n:::\n::: {.column width=\"10%\"}\n:::\n::: {.column width=\"45%\"}\n\n\n::: {.cell}\n\n:::\n\n\n:::\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

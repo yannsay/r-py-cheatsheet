@@ -1,9 +1,6 @@
 ---
 title: "template"
 author: "Yann Say"
-engine: knitr
-execute: 
-  freeze: auto
 ---
 ::: {.columns}
 ::: {.column width="45%"}
