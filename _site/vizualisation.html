@@ -8,7 +8,7 @@
 
 <meta name="author" content="Yann Say">
 
-<title>Some differences – R to Python cheatsheet</title>
+<title>Vizualisation – R to Python cheatsheet</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -114,7 +80,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./difference.html">Some differences</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      R to Python cheatsheet
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -147,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./difference.html" class="sidebar-item-text sidebar-link active">
+  <a href="./difference.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Some differences</span></a>
   </div>
 </li>
@@ -161,11 +129,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#difference" id="toc-difference" class="nav-link active" data-scroll-target="#difference">Difference</a>
-  <ul class="collapse">
-  <li><a href="#arguments-of-functions" id="toc-arguments-of-functions" class="nav-link" data-scroll-target="#arguments-of-functions">Arguments of functions</a></li>
-  <li><a href="#return" id="toc-return" class="nav-link" data-scroll-target="#return">Return</a></li>
-  </ul></li>
+  <li><a href="#dot" id="toc-dot" class="nav-link active" data-scroll-target="#dot">dot</a></li>
+  <li><a href="#bar" id="toc-bar" class="nav-link" data-scroll-target="#bar">bar</a></li>
+  <li><a href="#line" id="toc-line" class="nav-link" data-scroll-target="#line">line</a></li>
+  <li><a href="#legend" id="toc-legend" class="nav-link" data-scroll-target="#legend">legend</a></li>
+  <li><a href="#title" id="toc-title" class="nav-link" data-scroll-target="#title">title</a></li>
+  <li><a href="#geom" id="toc-geom" class="nav-link" data-scroll-target="#geom">geom</a></li>
   </ul>
 </nav>
     </div>
@@ -174,7 +143,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Some differences</h1>
+<h1 class="title">Vizualisation</h1>
 </div>
 
 
@@ -197,76 +166,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="difference" class="level1">
-<h1>Difference</h1>
-<section id="arguments-of-functions" class="level2">
-<h2 class="anchored" data-anchor-id="arguments-of-functions">Arguments of functions</h2>
-<p>In R, there is a fuzzy match between the variables. Python does not allow.</p>
-<div class="columns">
-<div class="column" style="width:45%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>my_r_function <span class="ot">&lt;-</span> <span class="cf">function</span>(number, text) {</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"this was a number: "</span>, number))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"this is a text: "</span>, text))</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">my_r_function</span>(<span class="at">num =</span> <span class="dv">123</span>, <span class="at">t =</span> <span class="st">"test"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "this was a number: 123"
-[1] "this is a text: test"</code></pre>
-</div>
-</div>
-</div><div class="column" style="width:10%;">
-
-</div><div class="column" style="width:45%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_py_function(number, text):</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"this was a number: "</span>, number)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"this is a text: "</span>, text)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>my_py_function(num <span class="op">=</span> <span class="dv">123</span>, t <span class="op">=</span> <span class="st">"test"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>TypeError: my_py_function() got an unexpected keyword argument 'num'</code></pre>
-</div>
-</div>
-</div>
-</div>
+<section id="dot" class="level1">
+<h1>dot</h1>
 </section>
-<section id="return" class="level2">
-<h2 class="anchored" data-anchor-id="return">Return</h2>
-<p>In R, function always return the last call. In Python, if you don’t return an object, it will return None.</p>
-<div class="columns">
-<div class="column" style="width:45%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>my_r_function <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">number =</span> <span class="dv">0</span>, <span class="at">text =</span> <span class="st">"a"</span>) {</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(number, text)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>my_r_example <span class="ot">&lt;-</span> <span class="fu">my_r_function</span>(<span class="dv">123</span>, <span class="st">"b"</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>my_r_example</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "123 b"</code></pre>
-</div>
-</div>
-</div><div class="column" style="width:10%;">
-
-</div><div class="column" style="width:45%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_py_function(number <span class="op">=</span> <span class="dv">0</span>, text <span class="op">=</span> <span class="st">"a"</span>):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">str</span>(number) <span class="op">+</span> text</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>my_py_example <span class="op">=</span> my_py_function(number <span class="op">=</span> <span class="dv">123</span>, text <span class="op">=</span> <span class="st">"b"</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_py_example)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>None</code></pre>
-</div>
-</div>
-</div>
-</div>
-
-
+<section id="bar" class="level1">
+<h1>bar</h1>
 </section>
+<section id="line" class="level1">
+<h1>line</h1>
+</section>
+<section id="legend" class="level1">
+<h1>legend</h1>
+</section>
+<section id="title" class="level1">
+<h1>title</h1>
+</section>
+<section id="geom" class="level1">
+<h1>geom</h1>
+
+
 </section>
 
 </main> <!-- /main -->

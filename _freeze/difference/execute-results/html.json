@@ -1,0 +1,15 @@
+{
+  "hash": "177ccf04d137cb7a4d987569214a4f6c",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Some differences\"\nauthor: \"Yann Say\"\nengine: knitr\nexecute: \n  freeze: auto\n---\n\n\n# Difference\n\n## Arguments of functions\n\nIn R, there is a fuzzy match between the variables. Python does not allow.\n\n::: {.columns}\n::: {.column width=\"45%\"}\n\n\n::: {.cell}\n\n```{.r .cell-code}\nmy_r_function <- function(number, text) {\n  print(paste0(\"this was a number: \", number))\n  print(paste0(\"this is a text: \", text))\n}\n\nmy_r_function(num = 123, t = \"test\")\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] \"this was a number: 123\"\n[1] \"this is a text: test\"\n```\n\n\n:::\n:::\n\n\n:::\n::: {.column width=\"10%\"}\n:::\n::: {.column width=\"45%\"}\n\n\n::: {.cell}\n\n```{.python .cell-code}\ndef my_py_function(number, text):\n  print(\"this was a number: \", number)\n  print(\"this is a text: \", text)\n  \nmy_py_function(num = 123, t = \"test\")\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\nTypeError: my_py_function() got an unexpected keyword argument 'num'\n```\n\n\n:::\n:::\n\n\n:::\n:::\n\n## Return\n\nIn R, function always return the last call. In Python, if you don't return an object, it will return None.\n\n::: {.columns}\n::: {.column width=\"45%\"}\n\n\n::: {.cell}\n\n```{.r .cell-code}\nmy_r_function <- function(number = 0, text = \"a\") {\n  paste(number, text)\n}\n\nmy_r_example <- my_r_function(123, \"b\")\nmy_r_example\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] \"123 b\"\n```\n\n\n:::\n:::\n\n\n:::\n::: {.column width=\"10%\"}\n:::\n::: {.column width=\"45%\"}\n\n\n::: {.cell}\n\n```{.python .cell-code}\ndef my_py_function(number = 0, text = \"a\"):\n  str(number) + text\n\n\nmy_py_example = my_py_function(number = 123, text = \"b\")\nprint(my_py_example)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\nNone\n```\n\n\n:::\n:::\n\n\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
