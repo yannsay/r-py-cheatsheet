@@ -1,9 +1,6 @@
 ---
 title: "Vizualisation"
 author: "Yann Say"
-engine: knitr
-execute: 
-  freeze: auto
 ---
 
 # dot

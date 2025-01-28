@@ -1,9 +1,6 @@
 ---
 title: "Data manipulation"
 author: "Yann Say"
-engine: knitr
-execute: 
-  freeze: auto
 ---
 # Reading and writing data
 
