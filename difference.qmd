@@ -1,3 +1,10 @@
+---
+title: "Some differences"
+author: "Yann Say"
+engine: knitr
+execute: 
+  freeze: auto
+---
 # Difference
 
 ## Arguments of functions

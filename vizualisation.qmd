@@ -1,0 +1,19 @@
+---
+title: "Vizualisation"
+author: "Yann Say"
+engine: knitr
+execute: 
+  freeze: auto
+---
+
+# dot
+
+# bar
+
+# line
+
+# legend
+
+# title
+
+# geom

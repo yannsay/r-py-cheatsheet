@@ -1,0 +1,15 @@
+{
+  "hash": "2e80d4a770f63b524da9520bfd70a0d9",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Vizualisation\"\nauthor: \"Yann Say\"\nengine: knitr\nexecute: \n  freeze: auto\n---\n\n\n\n# dot\n\n# bar\n\n# line\n\n# legend\n\n# title\n\n# geom",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

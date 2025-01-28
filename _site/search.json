@@ -1,282 +1,279 @@
 [
   {
+    "objectID": "vizualisation.html",
+    "href": "vizualisation.html",
+    "title": "Vizualisation",
+    "section": "",
+    "text": "dot\n\n\nbar\n\n\nline\n\n\nlegend\n\n\ntitle\n\n\ngeom"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "r-py-cheatsheet",
+    "title": "Data manipulation",
     "section": "",
     "text": "r_df_example &lt;- data.frame(id = letters[1:6],\nnumeric = 1:6)\nr_df_example\n\n  id numeric\n1  a       1\n2  b       2\n3  c       3\n4  d       4\n5  e       5\n6  f       6\n\n\n\n\n\n\nimport pandas as pd\npy_df_example = pd.DataFrame({'id': list('abcdef'),\n                 'numeric': list(range(1, 7))\n                })\n\npy_df_example\n\n  id  numeric\n0  a        1\n1  b        2\n2  c        3\n3  d        4\n4  e        5\n5  f        6\n\n\n\n\n\n\n\n\n\n\nlibrary(palmerpenguins)\nlibrary(dplyr)\n\nr_df &lt;- penguins\n\n\n\n\n\nimport seaborn as sns\npy_df = sns.load_dataset('penguins')\n\n\n\n\n\n\n\n\n\nr_df |&gt; \n  write.csv(\"penguins.csv\")\n\n\n\n\n\npy_df.to_csv('penguins.csv')\n\n\n\n\n\n\n\n\n\nr_df_csv &lt;- read.csv(\"penguins.csv\")\n\n\n\n\n\npy_df_csv = pd.read_csv(\"penguins.csv\")",
     "crumbs": [
-      "r-py-cheatsheet"
+      "Data manipulation"
     ]
   },
   {
     "objectID": "index.html#create-a-dataframe",
     "href": "index.html#create-a-dataframe",
-    "title": "r-py-cheatsheet",
+    "title": "Data manipulation",
     "section": "",
     "text": "r_df_example &lt;- data.frame(id = letters[1:6],\nnumeric = 1:6)\nr_df_example\n\n  id numeric\n1  a       1\n2  b       2\n3  c       3\n4  d       4\n5  e       5\n6  f       6\n\n\n\n\n\n\nimport pandas as pd\npy_df_example = pd.DataFrame({'id': list('abcdef'),\n                 'numeric': list(range(1, 7))\n                })\n\npy_df_example\n\n  id  numeric\n0  a        1\n1  b        2\n2  c        3\n3  d        4\n4  e        5\n5  f        6",
     "crumbs": [
-      "r-py-cheatsheet"
+      "Data manipulation"
     ]
   },
   {
     "objectID": "index.html#palmers",
     "href": "index.html#palmers",
-    "title": "r-py-cheatsheet",
+    "title": "Data manipulation",
     "section": "",
     "text": "library(palmerpenguins)\nlibrary(dplyr)\n\nr_df &lt;- penguins\n\n\n\n\n\nimport seaborn as sns\npy_df = sns.load_dataset('penguins')",
     "crumbs": [
-      "r-py-cheatsheet"
+      "Data manipulation"
     ]
   },
   {
     "objectID": "index.html#write-csvxlsx",
     "href": "index.html#write-csvxlsx",
-    "title": "r-py-cheatsheet",
+    "title": "Data manipulation",
     "section": "",
     "text": "r_df |&gt; \n  write.csv(\"penguins.csv\")\n\n\n\n\n\npy_df.to_csv('penguins.csv')",
     "crumbs": [
-      "r-py-cheatsheet"
+      "Data manipulation"
     ]
   },
   {
     "objectID": "index.html#read-csvxlsx",
     "href": "index.html#read-csvxlsx",
-    "title": "r-py-cheatsheet",
+    "title": "Data manipulation",
     "section": "",
     "text": "r_df_csv &lt;- read.csv(\"penguins.csv\")\n\n\n\n\n\npy_df_csv = pd.read_csv(\"penguins.csv\")",
     "crumbs": [
-      "r-py-cheatsheet"
+      "Data manipulation"
     ]
   },
   {
     "objectID": "index.html#columns-names",
     "href": "index.html#columns-names",
-    "title": "r-py-cheatsheet",
+    "title": "Data manipulation",
     "section": "Columns names",
     "text": "Columns names\n\n\n\nnames(r_df)\n\n[1] \"species\"           \"island\"            \"bill_length_mm\"   \n[4] \"bill_depth_mm\"     \"flipper_length_mm\" \"body_mass_g\"      \n[7] \"sex\"               \"year\"             \n\n\n\n\n\n\npy_df.columns\n\nIndex(['species', 'island', 'bill_length_mm', 'bill_depth_mm',\n       'flipper_length_mm', 'body_mass_g', 'sex'],\n      dtype='object')",
     "crumbs": [
-      "r-py-cheatsheet"
+      "Data manipulation"
     ]
   },
   {
     "objectID": "index.html#dimensions",
     "href": "index.html#dimensions",
-    "title": "r-py-cheatsheet",
+    "title": "Data manipulation",
     "section": "dimensions",
     "text": "dimensions\n\n\n\ndim(r_df)\n\n[1] 344   8\n\n\n\nnrow(r_df)\n\n[1] 344\n\n\n\nncol(r_df)\n\n[1] 8\n\n\n\n\n\n\npy_df.shape\n\n(344, 7)\n\n\n\npy_df.shape[0]\n\n344\n\n\n\npy_df.shape[1]\n\n7",
     "crumbs": [
-      "r-py-cheatsheet"
+      "Data manipulation"
     ]
   },
   {
     "objectID": "index.html#head",
     "href": "index.html#head",
-    "title": "r-py-cheatsheet",
+    "title": "Data manipulation",
     "section": "head",
     "text": "head\n\n\n\nr_df |&gt; head()\n\n# A tibble: 6 × 8\n  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie  Torgersen           39.1          18.7               181        3750\n2 Adelie  Torgersen           39.5          17.4               186        3800\n3 Adelie  Torgersen           40.3          18                 195        3250\n4 Adelie  Torgersen           NA            NA                  NA          NA\n5 Adelie  Torgersen           36.7          19.3               193        3450\n6 Adelie  Torgersen           39.3          20.6               190        3650\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n\n\n\n\npy_df.head()\n\n  species     island  bill_length_mm  ...  flipper_length_mm  body_mass_g     sex\n0  Adelie  Torgersen            39.1  ...              181.0       3750.0    Male\n1  Adelie  Torgersen            39.5  ...              186.0       3800.0  Female\n2  Adelie  Torgersen            40.3  ...              195.0       3250.0  Female\n3  Adelie  Torgersen             NaN  ...                NaN          NaN     NaN\n4  Adelie  Torgersen            36.7  ...              193.0       3450.0  Female\n\n[5 rows x 7 columns]",
     "crumbs": [
-      "r-py-cheatsheet"
+      "Data manipulation"
     ]
   },
   {
     "objectID": "index.html#table-tally",
     "href": "index.html#table-tally",
-    "title": "r-py-cheatsheet",
+    "title": "Data manipulation",
     "section": "table | tally",
     "text": "table | tally\n\n\n\nr_df$species |&gt;  table()\n\n\n   Adelie Chinstrap    Gentoo \n      152        68       124 \n\n\n\nr_df |&gt;  group_by(species) |&gt;  tally()\n\n# A tibble: 3 × 2\n  species       n\n  &lt;fct&gt;     &lt;int&gt;\n1 Adelie      152\n2 Chinstrap    68\n3 Gentoo      124\n\n\n\n\n\n\npy_df['species'].value_counts()\n\nspecies\nAdelie       152\nGentoo       124\nChinstrap     68\nName: count, dtype: int64",
     "crumbs": [
-      "r-py-cheatsheet"
+      "Data manipulation"
     ]
   },
   {
     "objectID": "index.html#summary",
     "href": "index.html#summary",
-    "title": "r-py-cheatsheet",
+    "title": "Data manipulation",
     "section": "summary",
     "text": "summary",
     "crumbs": [
-      "r-py-cheatsheet"
+      "Data manipulation"
     ]
   },
   {
     "objectID": "index.html#structure-info",
     "href": "index.html#structure-info",
-    "title": "r-py-cheatsheet",
+    "title": "Data manipulation",
     "section": "structure / info",
     "text": "structure / info\n\n\n\nr_df |&gt; str()\n\ntibble [344 × 8] (S3: tbl_df/tbl/data.frame)\n $ species          : Factor w/ 3 levels \"Adelie\",\"Chinstrap\",..: 1 1 1 1 1 1 1 1 1 1 ...\n $ island           : Factor w/ 3 levels \"Biscoe\",\"Dream\",..: 3 3 3 3 3 3 3 3 3 3 ...\n $ bill_length_mm   : num [1:344] 39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...\n $ bill_depth_mm    : num [1:344] 18.7 17.4 18 NA 19.3 20.6 17.8 19.6 18.1 20.2 ...\n $ flipper_length_mm: int [1:344] 181 186 195 NA 193 190 181 195 193 190 ...\n $ body_mass_g      : int [1:344] 3750 3800 3250 NA 3450 3650 3625 4675 3475 4250 ...\n $ sex              : Factor w/ 2 levels \"female\",\"male\": 2 1 1 NA 1 2 1 2 NA NA ...\n $ year             : int [1:344] 2007 2007 2007 2007 2007 2007 2007 2007 2007 2007 ...\n\n\n\n\n\n\npy_df.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 344 entries, 0 to 343\nData columns (total 7 columns):\n #   Column             Non-Null Count  Dtype  \n---  ------             --------------  -----  \n 0   species            344 non-null    object \n 1   island             344 non-null    object \n 2   bill_length_mm     342 non-null    float64\n 3   bill_depth_mm      342 non-null    float64\n 4   flipper_length_mm  342 non-null    float64\n 5   body_mass_g        342 non-null    float64\n 6   sex                333 non-null    object \ndtypes: float64(4), object(3)\nmemory usage: 18.9+ KB",
     "crumbs": [
-      "r-py-cheatsheet"
+      "Data manipulation"
     ]
   },
   {
     "objectID": "index.html#copy-of-dataframe",
     "href": "index.html#copy-of-dataframe",
-    "title": "r-py-cheatsheet",
+    "title": "Data manipulation",
     "section": "copy of dataframe",
     "text": "copy of dataframe\nHow to create 2 independent dataframes. In Python, if you another_df = original_df, each modification of another_df will be reflected in original_df.\n\n\n\nanother_r_df &lt;- r_df\n\n\n\n\n\nanother_py_df = py_df.copy()",
     "crumbs": [
-      "r-py-cheatsheet"
+      "Data manipulation"
     ]
   },
   {
     "objectID": "index.html#filter",
     "href": "index.html#filter",
-    "title": "r-py-cheatsheet",
+    "title": "Data manipulation",
     "section": "filter",
     "text": "filter\n\n\n\npenguins |&gt; \n  filter(species == \"Adelie\")\n\n# A tibble: 152 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 142 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n\nr_df[r_df$species == \"Adelie\",]\n\n# A tibble: 152 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 142 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n\n\n\n\npy_df[py_df[\"species\"] == \"Adelie\"]\n\n    species     island  bill_length_mm  ...  flipper_length_mm  body_mass_g     sex\n0    Adelie  Torgersen            39.1  ...              181.0       3750.0    Male\n1    Adelie  Torgersen            39.5  ...              186.0       3800.0  Female\n2    Adelie  Torgersen            40.3  ...              195.0       3250.0  Female\n3    Adelie  Torgersen             NaN  ...                NaN          NaN     NaN\n4    Adelie  Torgersen            36.7  ...              193.0       3450.0  Female\n..      ...        ...             ...  ...                ...          ...     ...\n147  Adelie      Dream            36.6  ...              184.0       3475.0  Female\n148  Adelie      Dream            36.0  ...              195.0       3450.0  Female\n149  Adelie      Dream            37.8  ...              193.0       3750.0    Male\n150  Adelie      Dream            36.0  ...              187.0       3700.0  Female\n151  Adelie      Dream            41.5  ...              201.0       4000.0    Male\n\n[152 rows x 7 columns]",
     "crumbs": [
-      "r-py-cheatsheet"
+      "Data manipulation"
     ]
   },
   {
     "objectID": "index.html#select",
     "href": "index.html#select",
-    "title": "r-py-cheatsheet",
+    "title": "Data manipulation",
     "section": "select",
     "text": "select\n\n\n\nr_df$species\n\n  [1] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n  [8] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [15] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [22] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [29] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [36] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [43] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [50] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [57] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [64] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [71] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [78] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [85] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [92] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [99] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n[106] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n[113] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n[120] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n[127] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n[134] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n[141] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n[148] Adelie    Adelie    Adelie    Adelie    Adelie    Gentoo    Gentoo   \n[155] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[162] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[169] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[176] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[183] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[190] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[197] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[204] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[211] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[218] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[225] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[232] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[239] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[246] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[253] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[260] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[267] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[274] Gentoo    Gentoo    Gentoo    Chinstrap Chinstrap Chinstrap Chinstrap\n[281] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap\n[288] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap\n[295] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap\n[302] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap\n[309] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap\n[316] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap\n[323] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap\n[330] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap\n[337] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap\n[344] Chinstrap\nLevels: Adelie Chinstrap Gentoo\n\n\n\nr_df[[\"species\"]]\n\n  [1] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n  [8] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [15] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [22] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [29] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [36] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [43] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [50] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [57] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [64] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [71] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [78] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [85] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [92] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n [99] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n[106] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n[113] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n[120] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n[127] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n[134] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n[141] Adelie    Adelie    Adelie    Adelie    Adelie    Adelie    Adelie   \n[148] Adelie    Adelie    Adelie    Adelie    Adelie    Gentoo    Gentoo   \n[155] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[162] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[169] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[176] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[183] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[190] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[197] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[204] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[211] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[218] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[225] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[232] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[239] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[246] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[253] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[260] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[267] Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo    Gentoo   \n[274] Gentoo    Gentoo    Gentoo    Chinstrap Chinstrap Chinstrap Chinstrap\n[281] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap\n[288] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap\n[295] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap\n[302] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap\n[309] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap\n[316] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap\n[323] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap\n[330] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap\n[337] Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap Chinstrap\n[344] Chinstrap\nLevels: Adelie Chinstrap Gentoo\n\n\n\n\n\n\npy_df.species\n\n0      Adelie\n1      Adelie\n2      Adelie\n3      Adelie\n4      Adelie\n        ...  \n339    Gentoo\n340    Gentoo\n341    Gentoo\n342    Gentoo\n343    Gentoo\nName: species, Length: 344, dtype: object\n\n\n\npy_df[\"species\"]\n\n0      Adelie\n1      Adelie\n2      Adelie\n3      Adelie\n4      Adelie\n        ...  \n339    Gentoo\n340    Gentoo\n341    Gentoo\n342    Gentoo\n343    Gentoo\nName: species, Length: 344, dtype: object\n\n\n\npy_df.filter([\"species\"])\n\n    species\n0    Adelie\n1    Adelie\n2    Adelie\n3    Adelie\n4    Adelie\n..      ...\n339  Gentoo\n340  Gentoo\n341  Gentoo\n342  Gentoo\n343  Gentoo\n\n[344 rows x 1 columns]",
     "crumbs": [
-      "r-py-cheatsheet"
+      "Data manipulation"
     ]
   },
   {
     "objectID": "index.html#filter-select",
     "href": "index.html#filter-select",
-    "title": "r-py-cheatsheet",
+    "title": "Data manipulation",
     "section": "filter & select",
     "text": "filter & select\n\n\n\nr_df |&gt; \n  filter(species == \"Adelie\") |&gt; \n  select(\"bill_length_mm\")\n\n# A tibble: 152 × 1\n   bill_length_mm\n            &lt;dbl&gt;\n 1           39.1\n 2           39.5\n 3           40.3\n 4           NA  \n 5           36.7\n 6           39.3\n 7           38.9\n 8           39.2\n 9           34.1\n10           42  \n# ℹ 142 more rows\n\n\n\nr_df[r_df$species == \"Adelie\", \"bill_length_mm\"]\n\n# A tibble: 152 × 1\n   bill_length_mm\n            &lt;dbl&gt;\n 1           39.1\n 2           39.5\n 3           40.3\n 4           NA  \n 5           36.7\n 6           39.3\n 7           38.9\n 8           39.2\n 9           34.1\n10           42  \n# ℹ 142 more rows\n\n\n\n\n\n\npy_df.loc[py_df[\"species\"] == \"Adelie\", \"bill_length_mm\"] \n\n0      39.1\n1      39.5\n2      40.3\n3       NaN\n4      36.7\n       ... \n147    36.6\n148    36.0\n149    37.8\n150    36.0\n151    41.5\nName: bill_length_mm, Length: 152, dtype: float64\n\n\n\n\n\n\n\nr_df[1,1]\n\n# A tibble: 1 × 1\n  species\n  &lt;fct&gt;  \n1 Adelie \n\n\n\nr_df[1:6, 1:6]\n\n# A tibble: 6 × 6\n  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie  Torgersen           39.1          18.7               181        3750\n2 Adelie  Torgersen           39.5          17.4               186        3800\n3 Adelie  Torgersen           40.3          18                 195        3250\n4 Adelie  Torgersen           NA            NA                  NA          NA\n5 Adelie  Torgersen           36.7          19.3               193        3450\n6 Adelie  Torgersen           39.3          20.6               190        3650\n\n\n\n\n\n\npy_df.iloc[0,0]\n\n'Adelie'\n\n\n\npy_df.iloc[:6,:6]\n\n  species     island  ...  flipper_length_mm  body_mass_g\n0  Adelie  Torgersen  ...              181.0       3750.0\n1  Adelie  Torgersen  ...              186.0       3800.0\n2  Adelie  Torgersen  ...              195.0       3250.0\n3  Adelie  Torgersen  ...                NaN          NaN\n4  Adelie  Torgersen  ...              193.0       3450.0\n5  Adelie  Torgersen  ...              190.0       3650.0\n\n[6 rows x 6 columns]",
     "crumbs": [
-      "r-py-cheatsheet"
+      "Data manipulation"
     ]
   },
   {
     "objectID": "index.html#mutate",
     "href": "index.html#mutate",
-    "title": "r-py-cheatsheet",
+    "title": "Data manipulation",
     "section": "mutate",
     "text": "mutate\n\n\n\nr_df_example[\"new_column\"] &lt;- \"new value\"\nr_df_example\n\n  id numeric new_column\n1  a       1  new value\n2  b       2  new value\n3  c       3  new value\n4  d       4  new value\n5  e       5  new value\n6  f       6  new value\n\n\n\nr_df_example &lt;- r_df_example |&gt; \n  mutate(new_column2 = paste(id, numeric))\nr_df_example\n\n  id numeric new_column new_column2\n1  a       1  new value         a 1\n2  b       2  new value         b 2\n3  c       3  new value         c 3\n4  d       4  new value         d 4\n5  e       5  new value         e 5\n6  f       6  new value         f 6\n\n\n\n\n\n\npy_df_example[\"new_column\"] = list(range(6))\npy_df_example\n\n  id  numeric  new_column\n0  a        1           0\n1  b        2           1\n2  c        3           2\n3  d        4           3\n4  e        5           4\n5  f        6           5\n\n\n\npy_df_example[\"new_column2\"] = py_df_example.apply(lambda row: row[\"id\"] + str(row[\"numeric\"]), axis = 1)\npy_df_example\n\n  id  numeric  new_column new_column2\n0  a        1           0          a1\n1  b        2           1          b2\n2  c        3           2          c3\n3  d        4           3          d4\n4  e        5           4          e5\n5  f        6           5          f6",
     "crumbs": [
-      "r-py-cheatsheet"
+      "Data manipulation"
     ]
   },
   {
     "objectID": "index.html#summarise",
     "href": "index.html#summarise",
-    "title": "r-py-cheatsheet",
+    "title": "Data manipulation",
     "section": "summarise",
     "text": "summarise\n\n\n\nr_df |&gt; \n  group_by(species) |&gt; \n  summarise(bill_length_mm = mean(bill_length_mm, na.rm = T))\n\n# A tibble: 3 × 2\n  species   bill_length_mm\n  &lt;fct&gt;              &lt;dbl&gt;\n1 Adelie              38.8\n2 Chinstrap           48.8\n3 Gentoo              47.5\n\n\n\n\n\n\npy_df.groupby('species')['bill_length_mm'].mean().reset_index()\n\n     species  bill_length_mm\n0     Adelie       38.791391\n1  Chinstrap       48.833824\n2     Gentoo       47.504878\n\n\n# # Mean dep_delay and arr_delay for each season\n# dadel_season = flights.groupby('season')['dep_delay', 'arr_delay'].mean().reset_index()\n# print(dadel_season)\n# \n# # Mean and std delays by origin\n# del_ori = flights.groupby('origin')['total_delay', 'dep_delay', 'arr_delay'].agg(['mean', 'std'])\n# print(del_ori)",
     "crumbs": [
-      "r-py-cheatsheet"
+      "Data manipulation"
     ]
   },
   {
     "objectID": "index.html#rename",
     "href": "index.html#rename",
-    "title": "r-py-cheatsheet",
+    "title": "Data manipulation",
     "section": "rename",
     "text": "rename\n\n\n\nr_df |&gt;\n  rename(Species = species,\n         Island = island)\n\n# A tibble: 344 × 8\n   Species Island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n\nrename_r_df &lt;- r_df[,c(\"species\", \"island\")]\nnames(rename_r_df) &lt;- c(\"Species\", \"Island\")\nnames(rename_r_df)\n\n[1] \"Species\" \"Island\" \n\n\n\n\n\n\npy_df_rename1 = py_df.copy()\npy_df_rename1.rename(columns={'species': 'Species', 'island': 'Island'}, inplace=True)\npy_df_rename1\n\n    Species     Island  bill_length_mm  ...  flipper_length_mm  body_mass_g     sex\n0    Adelie  Torgersen            39.1  ...              181.0       3750.0    Male\n1    Adelie  Torgersen            39.5  ...              186.0       3800.0  Female\n2    Adelie  Torgersen            40.3  ...              195.0       3250.0  Female\n3    Adelie  Torgersen             NaN  ...                NaN          NaN     NaN\n4    Adelie  Torgersen            36.7  ...              193.0       3450.0  Female\n..      ...        ...             ...  ...                ...          ...     ...\n339  Gentoo     Biscoe             NaN  ...                NaN          NaN     NaN\n340  Gentoo     Biscoe            46.8  ...              215.0       4850.0  Female\n341  Gentoo     Biscoe            50.4  ...              222.0       5750.0    Male\n342  Gentoo     Biscoe            45.2  ...              212.0       5200.0  Female\n343  Gentoo     Biscoe            49.9  ...              213.0       5400.0    Male\n\n[344 rows x 7 columns]\n\n\n\npy_df_rename2 = py_df[[\"species\",\"island\"]].copy()\npy_df_rename2.columns = [\"Species\", \"Island\"]\npy_df_rename2.columns\n\nIndex(['Species', 'Island'], dtype='object')",
     "crumbs": [
-      "r-py-cheatsheet"
+      "Data manipulation"
     ]
   },
   {
     "objectID": "index.html#arrange",
     "href": "index.html#arrange",
-    "title": "r-py-cheatsheet",
+    "title": "Data manipulation",
     "section": "arrange",
     "text": "arrange\n\n\n\nr_df |&gt; \n  arrange(species) |&gt; \n  head()\n\n# A tibble: 6 × 8\n  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Adelie  Torgersen           39.1          18.7               181        3750\n2 Adelie  Torgersen           39.5          17.4               186        3800\n3 Adelie  Torgersen           40.3          18                 195        3250\n4 Adelie  Torgersen           NA            NA                  NA          NA\n5 Adelie  Torgersen           36.7          19.3               193        3450\n6 Adelie  Torgersen           39.3          20.6               190        3650\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n\nr_df |&gt; \n  arrange(desc(species)) |&gt; \n  head()\n\n# A tibble: 6 × 8\n  species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n  &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n1 Gentoo  Biscoe           46.1          13.2               211        4500\n2 Gentoo  Biscoe           50            16.3               230        5700\n3 Gentoo  Biscoe           48.7          14.1               210        4450\n4 Gentoo  Biscoe           50            15.2               218        5700\n5 Gentoo  Biscoe           47.6          14.5               215        5400\n6 Gentoo  Biscoe           46.5          13.5               210        4550\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\n\n\n\n\npy_df.sort_values(by = \"species\").head()\n\n    species     island  bill_length_mm  ...  flipper_length_mm  body_mass_g     sex\n0    Adelie  Torgersen            39.1  ...              181.0       3750.0    Male\n98   Adelie      Dream            33.1  ...              178.0       2900.0  Female\n99   Adelie      Dream            43.2  ...              192.0       4100.0    Male\n100  Adelie     Biscoe            35.0  ...              192.0       3725.0  Female\n101  Adelie     Biscoe            41.0  ...              203.0       4725.0    Male\n\n[5 rows x 7 columns]\n\n\n\npy_df.sort_values(by = \"species\", ascending = False).head()\n\n    species  island  bill_length_mm  ...  flipper_length_mm  body_mass_g     sex\n343  Gentoo  Biscoe            49.9  ...              213.0       5400.0    Male\n265  Gentoo  Biscoe            43.6  ...              217.0       4900.0  Female\n251  Gentoo  Biscoe            42.8  ...              209.0       4700.0  Female\n252  Gentoo  Biscoe            45.1  ...              207.0       5050.0  Female\n253  Gentoo  Biscoe            59.6  ...              230.0       6050.0    Male\n\n[5 rows x 7 columns]",
     "crumbs": [
-      "r-py-cheatsheet"
-    ]
-  },
-  {
-    "objectID": "index.html#missing-value",
-    "href": "index.html#missing-value",
-    "title": "r-py-cheatsheet",
-    "section": "Missing value",
-    "text": "Missing value\n\n\n\nis.na(r_df$bill_length_mm)\n\n  [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [97] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[109] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[121] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[145] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[157] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[169] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[181] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[193] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[205] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[217] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[229] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[241] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[253] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[265] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE\n[277] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[289] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[301] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[313] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[325] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[337] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n\n\n\nsum(is.na(r_df$bill_length_mm) )\n\n[1] 2\n\n\n\nsum(!is.na(r_df$bill_length_mm) )\n\n[1] 342\n\n\n\n\n\n\npy_df[\"bill_length_mm\"].isnull()\n\n0      False\n1      False\n2      False\n3       True\n4      False\n       ...  \n339     True\n340    False\n341    False\n342    False\n343    False\nName: bill_length_mm, Length: 344, dtype: bool\n\n\n\npy_df[\"bill_length_mm\"].isnull().sum()\n\nnp.int64(2)\n\n\n\npy_df[\"bill_length_mm\"].notna().sum()\n\nnp.int64(342)",
-    "crumbs": [
-      "r-py-cheatsheet"
-    ]
-  },
-  {
-    "objectID": "index.html#types",
-    "href": "index.html#types",
-    "title": "r-py-cheatsheet",
-    "section": "types",
-    "text": "types\n\n\n\ntypeof(r_df)\n\n[1] \"list\"\n\n\n\n\n\n\ntype(py_df)\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;",
-    "crumbs": [
-      "r-py-cheatsheet"
-    ]
-  },
-  {
-    "objectID": "difference.html",
-    "href": "difference.html",
-    "title": "Difference",
-    "section": "",
-    "text": "In R, there is a fuzzy match between the variables. Python does not allow.\n\n\n\nmy_r_function &lt;- function(number, text) {\n  print(paste0(\"this was a number: \", number))\n  print(paste0(\"this is a text: \", text))\n}\n\nmy_r_function(num = 123, t = \"test\")\n\n[1] \"this was a number: 123\"\n[1] \"this is a text: test\"\n\n\n\n\n\n\ndef my_py_function(number, text):\n  print(\"this was a number: \", number)\n  print(\"this is a text: \", text)\n  \nmy_py_function(num = 123, t = \"test\")\n\nTypeError: my_py_function() got an unexpected keyword argument 'num'\n\n\n\n\n\n\n\nIn R, function always return the last call. In Python, if you don’t return an object, it will return None.\n\n\n\nmy_r_function &lt;- function(number = 0, text = \"a\") {\n  paste(number, text)\n}\n\nmy_r_example &lt;- my_r_function(123, \"b\")\nmy_r_example\n\n[1] \"123 b\"\n\n\n\n\n\n\ndef my_py_function(number = 0, text = \"a\"):\n  str(number) + text\n\n\nmy_py_example = my_py_function(number = 123, text = \"b\")\nprint(my_py_example)\n\nNone",
-    "crumbs": [
-      "Difference"
-    ]
-  },
-  {
-    "objectID": "difference.html#arguments-of-functions",
-    "href": "difference.html#arguments-of-functions",
-    "title": "Difference",
-    "section": "",
-    "text": "In R, there is a fuzzy match between the variables. Python does not allow.\n\n\n\nmy_r_function &lt;- function(number, text) {\n  print(paste0(\"this was a number: \", number))\n  print(paste0(\"this is a text: \", text))\n}\n\nmy_r_function(num = 123, t = \"test\")\n\n[1] \"this was a number: 123\"\n[1] \"this is a text: test\"\n\n\n\n\n\n\ndef my_py_function(number, text):\n  print(\"this was a number: \", number)\n  print(\"this is a text: \", text)\n  \nmy_py_function(num = 123, t = \"test\")\n\nTypeError: my_py_function() got an unexpected keyword argument 'num'",
-    "crumbs": [
-      "Difference"
-    ]
-  },
-  {
-    "objectID": "index.html#not",
-    "href": "index.html#not",
-    "title": "r-py-cheatsheet",
-    "section": "not",
-    "text": "not\n\n\n\n!TRUE\n\n[1] FALSE\n\n\n\n\n\n\nnot(True)\n\nFalse",
-    "crumbs": [
-      "r-py-cheatsheet"
-    ]
-  },
-  {
-    "objectID": "index.html#arguments-of-functions",
-    "href": "index.html#arguments-of-functions",
-    "title": "r-py-cheatsheet",
-    "section": "Arguments of functions",
-    "text": "Arguments of functions\nIn R, there is a fuzzy match between the variables. PYthon does not allow.\n\n\n\nmy_r_function &lt;- function(number, text) {\n  print(paste0(\"this was a number: \", number))\n  print(paste0(\"this is a text: \", text))\n}\n\nmy_r_function(num = 123, t = \"test\")\n\n[1] \"this was a number: 123\"\n[1] \"this is a text: test\"\n\n\n\n\n\n\ndef my_py_function(number, text):\n  print(\"this was a number: \", number)\n  print(\"this is a text: \", text)\n  \nmy_py_function(num = 123, t = \"test\")\n\nTypeError: my_py_function() got an unexpected keyword argument 'num'",
-    "crumbs": [
-      "r-py-cheatsheet"
+      "Data manipulation"
     ]
   },
   {
     "objectID": "index.html#anonymous-functions-lambda",
     "href": "index.html#anonymous-functions-lambda",
-    "title": "r-py-cheatsheet",
+    "title": "Data manipulation",
     "section": "anonymous functions / lambda",
     "text": "anonymous functions / lambda",
     "crumbs": [
-      "r-py-cheatsheet"
+      "Data manipulation"
+    ]
+  },
+  {
+    "objectID": "index.html#not",
+    "href": "index.html#not",
+    "title": "Data manipulation",
+    "section": "not",
+    "text": "not\n\n\n\n!TRUE\n\n[1] FALSE\n\n\n\n\n\n\nnot(True)\n\nFalse",
+    "crumbs": [
+      "Data manipulation"
+    ]
+  },
+  {
+    "objectID": "index.html#missing-value",
+    "href": "index.html#missing-value",
+    "title": "Data manipulation",
+    "section": "Missing value",
+    "text": "Missing value\n\n\n\nis.na(r_df$bill_length_mm)\n\n  [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n [97] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[109] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[121] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[145] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[157] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[169] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[181] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[193] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[205] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[217] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[229] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[241] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[253] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[265] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE\n[277] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[289] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[301] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[313] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[325] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[337] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n\n\n\nsum(is.na(r_df$bill_length_mm) )\n\n[1] 2\n\n\n\nsum(!is.na(r_df$bill_length_mm) )\n\n[1] 342\n\n\n\n\n\n\npy_df[\"bill_length_mm\"].isnull()\n\n0      False\n1      False\n2      False\n3       True\n4      False\n       ...  \n339     True\n340    False\n341    False\n342    False\n343    False\nName: bill_length_mm, Length: 344, dtype: bool\n\n\n\npy_df[\"bill_length_mm\"].isnull().sum()\n\nnp.int64(2)\n\n\n\npy_df[\"bill_length_mm\"].notna().sum()\n\nnp.int64(342)",
+    "crumbs": [
+      "Data manipulation"
     ]
   },
   {
     "objectID": "index.html#in-and-not-in",
     "href": "index.html#in-and-not-in",
-    "title": "r-py-cheatsheet",
+    "title": "Data manipulation",
     "section": "in and not in",
     "text": "in and not in\n\n### %in% \n### str_detect / grepl\n###!%in%\n\n\n### in \n###not in",
     "crumbs": [
-      "r-py-cheatsheet"
+      "Data manipulation"
+    ]
+  },
+  {
+    "objectID": "index.html#types",
+    "href": "index.html#types",
+    "title": "Data manipulation",
+    "section": "types",
+    "text": "types\n\n\n\ntypeof(r_df)\n\n[1] \"list\"\n\n\n\n\n\n\ntype(py_df)\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;",
+    "crumbs": [
+      "Data manipulation"
+    ]
+  },
+  {
+    "objectID": "difference.html",
+    "href": "difference.html",
+    "title": "Some differences",
+    "section": "",
+    "text": "In R, there is a fuzzy match between the variables. Python does not allow.\n\n\n\nmy_r_function &lt;- function(number, text) {\n  print(paste0(\"this was a number: \", number))\n  print(paste0(\"this is a text: \", text))\n}\n\nmy_r_function(num = 123, t = \"test\")\n\n[1] \"this was a number: 123\"\n[1] \"this is a text: test\"\n\n\n\n\n\n\ndef my_py_function(number, text):\n  print(\"this was a number: \", number)\n  print(\"this is a text: \", text)\n  \nmy_py_function(num = 123, t = \"test\")\n\nTypeError: my_py_function() got an unexpected keyword argument 'num'\n\n\n\n\n\n\n\nIn R, function always return the last call. In Python, if you don’t return an object, it will return None.\n\n\n\nmy_r_function &lt;- function(number = 0, text = \"a\") {\n  paste(number, text)\n}\n\nmy_r_example &lt;- my_r_function(123, \"b\")\nmy_r_example\n\n[1] \"123 b\"\n\n\n\n\n\n\ndef my_py_function(number = 0, text = \"a\"):\n  str(number) + text\n\n\nmy_py_example = my_py_function(number = 123, text = \"b\")\nprint(my_py_example)\n\nNone",
+    "crumbs": [
+      "Some differences"
+    ]
+  },
+  {
+    "objectID": "difference.html#arguments-of-functions",
+    "href": "difference.html#arguments-of-functions",
+    "title": "Some differences",
+    "section": "",
+    "text": "In R, there is a fuzzy match between the variables. Python does not allow.\n\n\n\nmy_r_function &lt;- function(number, text) {\n  print(paste0(\"this was a number: \", number))\n  print(paste0(\"this is a text: \", text))\n}\n\nmy_r_function(num = 123, t = \"test\")\n\n[1] \"this was a number: 123\"\n[1] \"this is a text: test\"\n\n\n\n\n\n\ndef my_py_function(number, text):\n  print(\"this was a number: \", number)\n  print(\"this is a text: \", text)\n  \nmy_py_function(num = 123, t = \"test\")\n\nTypeError: my_py_function() got an unexpected keyword argument 'num'",
+    "crumbs": [
+      "Some differences"
     ]
   },
   {
     "objectID": "difference.html#return",
     "href": "difference.html#return",
-    "title": "Difference",
+    "title": "Some differences",
     "section": "",
     "text": "In R, function always return the last call. In Python, if you don’t return an object, it will return None.\n\n\n\nmy_r_function &lt;- function(number = 0, text = \"a\") {\n  paste(number, text)\n}\n\nmy_r_example &lt;- my_r_function(123, \"b\")\nmy_r_example\n\n[1] \"123 b\"\n\n\n\n\n\n\ndef my_py_function(number = 0, text = \"a\"):\n  str(number) + text\n\n\nmy_py_example = my_py_function(number = 123, text = \"b\")\nprint(my_py_example)\n\nNone",
     "crumbs": [
-      "Difference"
+      "Some differences"
     ]
   }
 ]
