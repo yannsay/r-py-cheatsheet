@@ -20,6 +20,7 @@ r_df_example
 
 ```{python}
 import pandas as pd
+import numpy as np
 py_df_example = pd.DataFrame({'id': list('abcdef'),
                  'numeric': list(range(1, 7))
                 })
@@ -395,6 +396,9 @@ py_df_example
 :::
 :::
 ## summarise
+
+### One calculation
+
 ::: {.columns}
 
 ::: {.column width="45%"}
@@ -404,22 +408,59 @@ r_df |>
   summarise(bill_length_mm = mean(bill_length_mm, na.rm = T))
 ```
 :::
-
 ::: {.column width="10%"}
 :::
 ::: {.column width="45%"}
 
 ```{python}
-py_df.groupby('species')['bill_length_mm'].mean().reset_index()
+py_df.groupby('species').bill_length_mm.mean()
+```
+:::
+:::
 
-# # Mean dep_delay and arr_delay for each season
-# dadel_season = flights.groupby('season')['dep_delay', 'arr_delay'].mean().reset_index()
-# print(dadel_season)
-# 
-# # Mean and std delays by origin
-# del_ori = flights.groupby('origin')['total_delay', 'dep_delay', 'arr_delay'].agg(['mean', 'std'])
-# print(del_ori)
+### Two calculations: one variable, two functions
 
+::: {.columns}
+
+::: {.column width="45%"}
+```{r}
+r_df |> 
+  group_by(species) |> 
+  summarise(mean = mean(bill_length_mm, na.rm = T), 
+            median = median(bill_length_mm, na.rm = T)) 
+```
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+
+```{python}
+py_df.groupby("species").bill_length_mm.agg([np.mean, np.median]).reset_index()
+```
+:::
+:::
+
+### Two calculations: two variable, one function
+
+::: {.columns}
+::: {.column width="45%"}
+```{r}
+r_df |> 
+  group_by(species) |> 
+  summarise(bill_length_mean = mean(bill_length_mm, na.rm = T),
+            body_mass_mean = mean(body_mass_g, na.rm = T))
+```
+
+
+:::
+
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+
+
+```{python}
+py_df.groupby('species')[['bill_length_mm','body_mass_g']].mean().reset_index().rename(columns={"bill_length_mm":"bill_length_mean","body_mass_g":"body_mass_mean"})
 ```
 
 :::
@@ -485,6 +526,8 @@ py_df.sort_values(by = "species", ascending = False).head()
 ```
 :::
 :::
+## joins
+
 
 # control flows and loops
 

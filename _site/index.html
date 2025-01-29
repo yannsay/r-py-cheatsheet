@@ -184,9 +184,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#select" id="toc-select" class="nav-link" data-scroll-target="#select">select</a></li>
   <li><a href="#filter-select" id="toc-filter-select" class="nav-link" data-scroll-target="#filter-select">filter &amp; select</a></li>
   <li><a href="#mutate" id="toc-mutate" class="nav-link" data-scroll-target="#mutate">mutate</a></li>
-  <li><a href="#summarise" id="toc-summarise" class="nav-link" data-scroll-target="#summarise">summarise</a></li>
+  <li><a href="#summarise" id="toc-summarise" class="nav-link" data-scroll-target="#summarise">summarise</a>
+  <ul class="collapse">
+  <li><a href="#one-calculation" id="toc-one-calculation" class="nav-link" data-scroll-target="#one-calculation">One calculation</a></li>
+  <li><a href="#two-calculations-one-variable-two-functions" id="toc-two-calculations-one-variable-two-functions" class="nav-link" data-scroll-target="#two-calculations-one-variable-two-functions">Two calculations: one variable, two functions</a></li>
+  <li><a href="#two-calculations-two-variable-one-function" id="toc-two-calculations-two-variable-one-function" class="nav-link" data-scroll-target="#two-calculations-two-variable-one-function">Two calculations: two variable, one function</a></li>
+  </ul></li>
   <li><a href="#rename" id="toc-rename" class="nav-link" data-scroll-target="#rename">rename</a></li>
   <li><a href="#arrange" id="toc-arrange" class="nav-link" data-scroll-target="#arrange">arrange</a></li>
+  <li><a href="#joins" id="toc-joins" class="nav-link" data-scroll-target="#joins">joins</a></li>
   </ul></li>
   <li><a href="#control-flows-and-loops" id="toc-control-flows-and-loops" class="nav-link" data-scroll-target="#control-flows-and-loops">control flows and loops</a></li>
   <li><a href="#function" id="toc-function" class="nav-link" data-scroll-target="#function">function</a>
@@ -259,11 +265,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div><div class="column" style="width:45%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>py_df_example <span class="op">=</span> pd.DataFrame({<span class="st">'id'</span>: <span class="bu">list</span>(<span class="st">'abcdef'</span>),</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                 <span class="st">'numeric'</span>: <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>))</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                })</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>py_df_example</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>py_df_example <span class="op">=</span> pd.DataFrame({<span class="st">'id'</span>: <span class="bu">list</span>(<span class="st">'abcdef'</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                 <span class="st">'numeric'</span>: <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                })</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>py_df_example</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  id  numeric
 0  a        1
@@ -984,6 +991,8 @@ Name: bill_length_mm, Length: 152, dtype: float64</code></pre>
 </section>
 <section id="summarise" class="level2">
 <h2 class="anchored" data-anchor-id="summarise">summarise</h2>
+<section id="one-calculation" class="level3">
+<h3 class="anchored" data-anchor-id="one-calculation">One calculation</h3>
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell">
@@ -1003,33 +1012,95 @@ Name: bill_length_mm, Length: 152, dtype: float64</code></pre>
 
 </div><div class="column" style="width:45%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>py_df.groupby(<span class="st">'species'</span>)[<span class="st">'bill_length_mm'</span>].mean().reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>py_df.groupby(<span class="st">'species'</span>).bill_length_mm.mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     species  bill_length_mm
-0     Adelie       38.791391
-1  Chinstrap       48.833824
-2     Gentoo       47.504878</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="co"># # Mean dep_delay and arr_delay for each season</span></span>
-<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dadel_season = flights.groupby('season')['dep_delay', 'arr_delay'].mean().reset_index()</span></span>
-<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a><span class="co"># print(dadel_season)</span></span>
-<span id="cb85-5"><a href="#cb85-5" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb85-6"><a href="#cb85-6" aria-hidden="true" tabindex="-1"></a><span class="co"># # Mean and std delays by origin</span></span>
-<span id="cb85-7"><a href="#cb85-7" aria-hidden="true" tabindex="-1"></a><span class="co"># del_ori = flights.groupby('origin')['total_delay', 'dep_delay', 'arr_delay'].agg(['mean', 'std'])</span></span>
-<span id="cb85-8"><a href="#cb85-8" aria-hidden="true" tabindex="-1"></a><span class="co"># print(del_ori)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>species
+Adelie       38.791391
+Chinstrap    48.833824
+Gentoo       47.504878
+Name: bill_length_mm, dtype: float64</code></pre>
 </div>
 </div>
 </div>
+</div>
+</section>
+<section id="two-calculations-one-variable-two-functions" class="level3">
+<h3 class="anchored" data-anchor-id="two-calculations-one-variable-two-functions">Two calculations: one variable, two functions</h3>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>r_df <span class="sc">|&gt;</span> </span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(bill_length_mm, <span class="at">na.rm =</span> T), </span>
+<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">median =</span> <span class="fu">median</span>(bill_length_mm, <span class="at">na.rm =</span> T)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  species    mean median
+  &lt;fct&gt;     &lt;dbl&gt;  &lt;dbl&gt;
+1 Adelie     38.8   38.8
+2 Chinstrap  48.8   49.6
+3 Gentoo     47.5   47.3</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:10%;">
+
+</div><div class="column" style="width:45%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>py_df.groupby(<span class="st">"species"</span>).bill_length_mm.agg([np.mean, np.median]).reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;string&gt;:1: FutureWarning: The provided callable &lt;function mean at 0x00000133781DB7E0&gt; is currently using SeriesGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "mean" instead.
+&lt;string&gt;:1: FutureWarning: The provided callable &lt;function median at 0x00000133784331A0&gt; is currently using SeriesGroupBy.median. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "median" instead.
+     species       mean  median
+0     Adelie  38.791391   38.80
+1  Chinstrap  48.833824   49.55
+2     Gentoo  47.504878   47.30</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="two-calculations-two-variable-one-function" class="level3">
+<h3 class="anchored" data-anchor-id="two-calculations-two-variable-one-function">Two calculations: two variable, one function</h3>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>r_df <span class="sc">|&gt;</span> </span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">bill_length_mean =</span> <span class="fu">mean</span>(bill_length_mm, <span class="at">na.rm =</span> T),</span>
+<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">body_mass_mean =</span> <span class="fu">mean</span>(body_mass_g, <span class="at">na.rm =</span> T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  species   bill_length_mean body_mass_mean
+  &lt;fct&gt;                &lt;dbl&gt;          &lt;dbl&gt;
+1 Adelie                38.8          3701.
+2 Chinstrap             48.8          3733.
+3 Gentoo                47.5          5076.</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:10%;">
+
+</div><div class="column" style="width:45%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>py_df.groupby(<span class="st">'species'</span>)[[<span class="st">'bill_length_mm'</span>,<span class="st">'body_mass_g'</span>]].mean().reset_index().rename(columns<span class="op">=</span>{<span class="st">"bill_length_mm"</span>:<span class="st">"bill_length_mean"</span>,<span class="st">"body_mass_g"</span>:<span class="st">"body_mass_mean"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     species  bill_length_mean  body_mass_mean
+0     Adelie         38.791391     3700.662252
+1  Chinstrap         48.833824     3733.088235
+2     Gentoo         47.504878     5076.016260</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="rename" class="level2">
 <h2 class="anchored" data-anchor-id="rename">rename</h2>
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>r_df <span class="sc">|&gt;</span></span>
-<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Species =</span> species,</span>
-<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">Island =</span> island)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>r_df <span class="sc">|&gt;</span></span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Species =</span> species,</span>
+<span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">Island =</span> island)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 344 × 8
    Species Island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
@@ -1049,9 +1120,9 @@ Name: bill_length_mm, Length: 152, dtype: float64</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>rename_r_df <span class="ot">&lt;-</span> r_df[,<span class="fu">c</span>(<span class="st">"species"</span>, <span class="st">"island"</span>)]</span>
-<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(rename_r_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Species"</span>, <span class="st">"Island"</span>)</span>
-<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(rename_r_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>rename_r_df <span class="ot">&lt;-</span> r_df[,<span class="fu">c</span>(<span class="st">"species"</span>, <span class="st">"island"</span>)]</span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(rename_r_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Species"</span>, <span class="st">"Island"</span>)</span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(rename_r_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Species" "Island" </code></pre>
 </div>
@@ -1060,9 +1131,9 @@ Name: bill_length_mm, Length: 152, dtype: float64</code></pre>
 
 </div><div class="column" style="width:45%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>py_df_rename1 <span class="op">=</span> py_df.copy()</span>
-<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>py_df_rename1.rename(columns<span class="op">=</span>{<span class="st">'species'</span>: <span class="st">'Species'</span>, <span class="st">'island'</span>: <span class="st">'Island'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a>py_df_rename1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>py_df_rename1 <span class="op">=</span> py_df.copy()</span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>py_df_rename1.rename(columns<span class="op">=</span>{<span class="st">'species'</span>: <span class="st">'Species'</span>, <span class="st">'island'</span>: <span class="st">'Island'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>py_df_rename1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    Species     Island  bill_length_mm  ...  flipper_length_mm  body_mass_g     sex
 0    Adelie  Torgersen            39.1  ...              181.0       3750.0    Male
@@ -1081,9 +1152,9 @@ Name: bill_length_mm, Length: 152, dtype: float64</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>py_df_rename2 <span class="op">=</span> py_df[[<span class="st">"species"</span>,<span class="st">"island"</span>]].copy()</span>
-<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>py_df_rename2.columns <span class="op">=</span> [<span class="st">"Species"</span>, <span class="st">"Island"</span>]</span>
-<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>py_df_rename2.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>py_df_rename2 <span class="op">=</span> py_df[[<span class="st">"species"</span>,<span class="st">"island"</span>]].copy()</span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a>py_df_rename2.columns <span class="op">=</span> [<span class="st">"Species"</span>, <span class="st">"Island"</span>]</span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a>py_df_rename2.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Index(['Species', 'Island'], dtype='object')</code></pre>
 </div>
@@ -1096,9 +1167,9 @@ Name: bill_length_mm, Length: 152, dtype: float64</code></pre>
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>r_df <span class="sc">|&gt;</span> </span>
-<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(species) <span class="sc">|&gt;</span> </span>
-<span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>r_df <span class="sc">|&gt;</span> </span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(species) <span class="sc">|&gt;</span> </span>
+<span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 8
   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
@@ -1113,9 +1184,9 @@ Name: bill_length_mm, Length: 152, dtype: float64</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>r_df <span class="sc">|&gt;</span> </span>
-<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(species)) <span class="sc">|&gt;</span> </span>
-<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>r_df <span class="sc">|&gt;</span> </span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(species)) <span class="sc">|&gt;</span> </span>
+<span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 8
   species island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
@@ -1133,7 +1204,7 @@ Name: bill_length_mm, Length: 152, dtype: float64</code></pre>
 
 </div><div class="column" style="width:45%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>py_df.sort_values(by <span class="op">=</span> <span class="st">"species"</span>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>py_df.sort_values(by <span class="op">=</span> <span class="st">"species"</span>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    species     island  bill_length_mm  ...  flipper_length_mm  body_mass_g     sex
 0    Adelie  Torgersen            39.1  ...              181.0       3750.0    Male
@@ -1146,7 +1217,7 @@ Name: bill_length_mm, Length: 152, dtype: float64</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>py_df.sort_values(by <span class="op">=</span> <span class="st">"species"</span>, ascending <span class="op">=</span> <span class="va">False</span>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>py_df.sort_values(by <span class="op">=</span> <span class="st">"species"</span>, ascending <span class="op">=</span> <span class="va">False</span>).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    species  island  bill_length_mm  ...  flipper_length_mm  body_mass_g     sex
 343  Gentoo  Biscoe            49.9  ...              213.0       5400.0    Male
@@ -1161,6 +1232,9 @@ Name: bill_length_mm, Length: 152, dtype: float64</code></pre>
 </div>
 </div>
 </section>
+<section id="joins" class="level2">
+<h2 class="anchored" data-anchor-id="joins">joins</h2>
+</section>
 </section>
 <section id="control-flows-and-loops" class="level1">
 <h1>control flows and loops</h1>
@@ -1170,13 +1244,13 @@ Name: bill_length_mm, Length: 152, dtype: float64</code></pre>
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>my_r_function <span class="ot">&lt;-</span> <span class="cf">function</span>(number) {</span>
-<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>  my_square <span class="ot">=</span> number <span class="sc">*</span> number</span>
-<span id="cb102-4"><a href="#cb102-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(my_square)</span>
-<span id="cb102-5"><a href="#cb102-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb102-6"><a href="#cb102-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb102-7"><a href="#cb102-7" aria-hidden="true" tabindex="-1"></a><span class="fu">my_r_function</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>my_r_function <span class="ot">&lt;-</span> <span class="cf">function</span>(number) {</span>
+<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a>  my_square <span class="ot">=</span> number <span class="sc">*</span> number</span>
+<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(my_square)</span>
+<span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb109-6"><a href="#cb109-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-7"><a href="#cb109-7" aria-hidden="true" tabindex="-1"></a><span class="fu">my_r_function</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 25</code></pre>
 </div>
@@ -1185,11 +1259,11 @@ Name: bill_length_mm, Length: 152, dtype: float64</code></pre>
 
 </div><div class="column" style="width:45%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_py_function(number):</span>
-<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>  my_square <span class="op">=</span> number <span class="op">*</span> number</span>
-<span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> my_square</span>
-<span id="cb104-4"><a href="#cb104-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-5"><a href="#cb104-5" aria-hidden="true" tabindex="-1"></a>my_py_function(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> my_py_function(number):</span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>  my_square <span class="op">=</span> number <span class="op">*</span> number</span>
+<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> my_square</span>
+<span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-5"><a href="#cb111-5" aria-hidden="true" tabindex="-1"></a>my_py_function(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>25</code></pre>
 </div>
@@ -1207,7 +1281,7 @@ Name: bill_length_mm, Length: 152, dtype: float64</code></pre>
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="cn">TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="cn">TRUE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
@@ -1216,7 +1290,7 @@ Name: bill_length_mm, Length: 152, dtype: float64</code></pre>
 
 </div><div class="column" style="width:45%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="kw">not</span>(<span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="kw">not</span>(<span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>False</code></pre>
 </div>
@@ -1229,7 +1303,7 @@ Name: bill_length_mm, Length: 152, dtype: float64</code></pre>
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(r_df<span class="sc">$</span>bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(r_df<span class="sc">$</span>bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
  [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
@@ -1263,13 +1337,13 @@ Name: bill_length_mm, Length: 152, dtype: float64</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(r_df<span class="sc">$</span>bill_length_mm) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(r_df<span class="sc">$</span>bill_length_mm) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(r_df<span class="sc">$</span>bill_length_mm) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(r_df<span class="sc">$</span>bill_length_mm) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 342</code></pre>
 </div>
@@ -1278,7 +1352,7 @@ Name: bill_length_mm, Length: 152, dtype: float64</code></pre>
 
 </div><div class="column" style="width:45%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>py_df[<span class="st">"bill_length_mm"</span>].isnull()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>py_df[<span class="st">"bill_length_mm"</span>].isnull()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0      False
 1      False
@@ -1295,13 +1369,13 @@ Name: bill_length_mm, Length: 344, dtype: bool</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>py_df[<span class="st">"bill_length_mm"</span>].isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>py_df[<span class="st">"bill_length_mm"</span>].isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>np.int64(2)</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>py_df[<span class="st">"bill_length_mm"</span>].notna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a>py_df[<span class="st">"bill_length_mm"</span>].notna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>np.int64(342)</code></pre>
 </div>
@@ -1312,13 +1386,13 @@ Name: bill_length_mm, Length: 344, dtype: bool</code></pre>
 <section id="in-and-not-in" class="level2">
 <h2 class="anchored" data-anchor-id="in-and-not-in">in and not in</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="do">### %in% </span></span>
-<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="do">### str_detect / grepl</span></span>
-<span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="do">###!%in%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb129"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="do">### %in% </span></span>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="do">### str_detect / grepl</span></span>
+<span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a><span class="do">###!%in%</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="co">### in </span></span>
-<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="co">###not in</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co">### in </span></span>
+<span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="co">###not in</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -1327,23 +1401,23 @@ Name: bill_length_mm, Length: 344, dtype: bool</code></pre>
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb124"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb131"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "_freeze"               "_quarto.yml"           "_site"                
- [4] "difference.html"       "difference.qmd"        "index.qmd"            
- [7] "index.rmarkdown"       "index_files"           "penguins.csv"         
-[10] "r-py-cheatsheet.Rproj" "README.md"             "setup.R"              
-[13] "site_libs"             "template.qmd"          "vizualisation.qmd"    </code></pre>
+ [4] "difference.qmd"        "index.qmd"             "index.rmarkdown"      
+ [7] "index_files"           "penguins.csv"          "r-py-cheatsheet.Rproj"
+[10] "README.md"             "setup.R"               "template.qmd"         
+[13] "vizualisation.qmd"    </code></pre>
 </div>
 </div>
 </div><div class="column" style="width:10%;">
 
 </div><div class="column" style="width:45%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a>os.listdir()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb133"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a>os.listdir()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['.git', '.github', '.gitignore', '.quarto', '.Rhistory', '.Rproj.user', 'difference.html', 'difference.qmd', 'index.qmd', 'index.rmarkdown', 'index_files', 'penguins.csv', 'r-py-cheatsheet.Rproj', 'README.md', 'setup.R', 'site_libs', 'template.qmd', 'vizualisation.qmd', '_freeze', '_quarto.yml', '_site']</code></pre>
+<pre><code>['.git', '.github', '.gitignore', '.quarto', '.Rhistory', '.Rproj.user', 'difference.qmd', 'index.qmd', 'index.rmarkdown', 'index_files', 'penguins.csv', 'r-py-cheatsheet.Rproj', 'README.md', 'setup.R', 'template.qmd', 'vizualisation.qmd', '_freeze', '_quarto.yml', '_site']</code></pre>
 </div>
 </div>
 </div>
@@ -1353,7 +1427,7 @@ Name: bill_length_mm, Length: 344, dtype: bool</code></pre>
 <div class="columns">
 <div class="column" style="width:45%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(r_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb135"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(r_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "list"</code></pre>
 </div>
@@ -1362,7 +1436,7 @@ Name: bill_length_mm, Length: 344, dtype: bool</code></pre>
 
 </div><div class="column" style="width:45%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(py_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb137"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb137-1"><a href="#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(py_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;</code></pre>
 </div>
