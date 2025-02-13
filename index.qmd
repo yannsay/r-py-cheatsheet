@@ -180,6 +180,12 @@ r_df$species |>  table()
 ```{r}
 r_df |>  group_by(species) |>  tally()
 ```
+```{r}
+table(r_df$species,r_df$island)
+```
+```{r}
+table(r_df$species,r_df$sex, useNA = "ifany")
+```
 
 :::
 
@@ -188,6 +194,13 @@ r_df |>  group_by(species) |>  tally()
 ::: {.column width="45%"}
 ```{python}
 py_df['species'].value_counts()
+
+```
+```{python}
+pd.crosstab(py_df.species,py_df.island)
+```
+```{python}
+pd.crosstab(py_df.species,py_df.sex,dropna = False)
 
 ```
 
@@ -257,6 +270,8 @@ another_py_df = py_df.copy()
 :::
 
 ## filter
+
+### Filter for given value
 ::: {.columns}
 
 ::: {.column width="45%"}
@@ -278,7 +293,27 @@ py_df[py_df["species"] == "Adelie"]
 
 ```
 :::
+:::
 
+### Filter for non missing value
+::: {.columns}
+
+::: {.column width="45%"}
+```{r}
+penguins |> 
+  filter(!is.na(sex))
+```
+
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+
+```{python}
+py_df.dropna(subset= "sex")
+
+```
+:::
 :::
 
 ## select
@@ -392,6 +427,43 @@ py_df_example["new_column2"] = py_df_example.apply(lambda row: row["id"] + str(r
 py_df_example
 ```
 
+
+:::
+:::
+
+## case_when
+::: {.columns}
+::: {.column width="45%"}
+```{r}
+r_df$island|>  unique(
+  
+)
+```
+```{r}
+r_df <- r_df |>  
+  mutate(xx = case_when(island == "Biscoe" ~ "case1", 
+                        island == "Torgersen" ~ "case2",
+                        TRUE ~ "case3"))
+
+r_df[["xx"]]
+
+```
+
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+```{python}
+def my_case(x_):
+  if x_ == "Biscoe":
+    return "case1"
+  if x_ == "Torgersen":
+    return "case2"
+  return "case3"
+py_df["xx"] = py_df.apply(lambda row: my_case(row["island"]), axis = 1)
+
+py_df.xx
+```
 
 :::
 :::
@@ -527,6 +599,34 @@ py_df.sort_values(by = "species", ascending = False).head()
 :::
 :::
 ## joins
+
+### left_join
+::: {.columns}
+::: {.column width="45%"}
+```{r}
+
+```
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="45%"}
+```{python}
+
+```
+:::
+:::
+
+### right_join
+
+### full_join
+
+### inner_join
+
+## pivot
+
+### pivot_wider / pivot_table
+
+### pivot_longer / merge
 
 
 # control flows and loops
